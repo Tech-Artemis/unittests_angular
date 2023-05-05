@@ -1,0 +1,12 @@
+<h1>
+    {{ title() }}
+</h1>
+
+<input type="text" [ngModel]="cep()" (ngModelChange)="cep.set($event)"> =
+{{ cep() }}
+
+<pre>
+    {{ obterCep$() | async | json }}
+  </pre>
+
+<!-- <button (click)="setarEnderecoNovo('67120424')">Mudar</button> -->
