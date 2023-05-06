@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { map, startWith } from 'rxjs';
@@ -12,7 +12,6 @@ import { map, startWith } from 'rxjs';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
