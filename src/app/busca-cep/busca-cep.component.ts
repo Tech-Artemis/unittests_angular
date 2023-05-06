@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-signals-teste',
-  templateUrl: './signals-teste.component.html',
-  styleUrls: ['./signals-teste.component.scss'],
+  selector: 'app-busca-cep',
+  templateUrl: './busca-cep.component.html',
+  styleUrls: ['./busca-cep.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -15,7 +15,7 @@ import { map } from 'rxjs';
     HttpClientModule,
   ]
 })
-export class SignalsTesteComponent {
+export class BuscaCepComponent {
   public title = signal('angular-signals');
   public cep = signal('01001000');
   public obterCep$ = computed(() => {
