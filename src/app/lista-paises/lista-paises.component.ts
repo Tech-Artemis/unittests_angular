@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild, computed, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+
 import { map } from 'rxjs';
 
 import paises from './paises';
@@ -17,7 +18,9 @@ import paises from './paises';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListaPaisesComponent {
+export class ListaPaisesComponent implements AfterViewInit {
+
+  @ViewChild('inp') public inp!: ElementRef<HTMLInputElement>;
 
   public paises = signal(paises);
   public termo = new FormControl<string | null>(null);
@@ -29,5 +32,9 @@ export class ListaPaisesComponent {
 
     return this.paises().filter(p => p.toLowerCase().includes(termo));
   });
+
+  public ngAfterViewInit(): void {
+    this.inp.nativeElement.focus();
+  }
 
 }
