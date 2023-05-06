@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { map, startWith } from 'rxjs';
 
@@ -16,6 +16,8 @@ import { map, startWith } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BuscaCepComponent {
+
+  private _http = inject(HttpClient);
 
   public title = signal('angular-signals');
   public teste = signal({ nome: 'teste' });
@@ -36,7 +38,7 @@ export class BuscaCepComponent {
   });
 
 
-  constructor(private _http: HttpClient) {
+  constructor() {
     this.title.set('Busca de CE');
     this.title.update((prev) => prev + 'P');
 
