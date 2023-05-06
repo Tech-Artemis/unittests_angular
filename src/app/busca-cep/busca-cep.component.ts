@@ -34,6 +34,7 @@ export class BuscaCepComponent {
 
 
   constructor(private _http: HttpClient) {
+    this.title.set('Busca de CEP');
     effect(() => {
       console.log('mudou >>>>>>>>>', this.cep());
     });

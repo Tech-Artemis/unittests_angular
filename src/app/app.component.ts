@@ -1,6 +1,6 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
 
 @Component({
