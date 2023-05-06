@@ -22,7 +22,7 @@ export class ListaPaisesComponent implements AfterViewInit {
 
   @ViewChild('inp') public inp!: ElementRef<HTMLInputElement>;
 
-  public paises = signal(paises);
+  public paises = signal(paises).asReadonly();
   public termo = new FormControl<string | null>(null);
   public termoSignal = toSignal(this.termo.valueChanges.pipe(map(termo => termo?.toLowerCase())));
   public paisesFiltrados = computed(() => {

@@ -16,7 +16,9 @@ import { map, startWith } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BuscaCepComponent {
+
   public title = signal('angular-signals');
+  public teste = signal({ nome: 'teste' });
   public cep = signal('01001000');
   public obterCep$ = computed(() => {
     if (this.cep().length !== 8) return;
@@ -35,7 +37,13 @@ export class BuscaCepComponent {
 
 
   constructor(private _http: HttpClient) {
-    this.title.set('Busca de CEP');
+    this.title.set('Busca de CE');
+    this.title.update((prev) => prev + 'P');
+
+    setTimeout(() => {
+      this.teste.mutate(value => value.nome = 'Teste!');
+    }, 1000);
+
     effect(() => {
       console.log('mudou >>>>>>>>>', this.cep());
     });

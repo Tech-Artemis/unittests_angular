@@ -1,5 +1,6 @@
 <h1>
-    {{ title() }}
+  {{ title() }}
+  <span style="font-size: 14px;">{{ teste().nome }}</span>
 </h1>
 
 <input type="text" [ngModel]="cep()" (ngModelChange)="cep.set($event)">
