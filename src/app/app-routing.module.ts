@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'signals', pathMatch: 'full' },
+  { path: '', redirectTo: 'cep', pathMatch: 'full' },
   {
-    path: 'signals',
+    path: 'cep',
     loadComponent: () => import('./busca-cep/busca-cep.component').then(c => c.BuscaCepComponent),
   },
   {

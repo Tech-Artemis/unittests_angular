@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<nav>
+    <div class="opcoes">
+        <button [routerLink]="'cep'" [class.active]="rotaAtual() === 'cep'">CEP</button>
+        <button [routerLink]="'paises'" [class.active]="rotaAtual() === 'paises'">Países</button>
+    </div>
+</nav>
+
+<main class="container">
+    <router-outlet></router-outlet>
+</main>
