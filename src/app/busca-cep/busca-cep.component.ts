@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { map, startWith } from 'rxjs';
+import { map, of, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-busca-cep',
@@ -23,9 +23,9 @@ export class BuscaCepComponent {
   public teste = signal({ nome: 'teste' });
   public cep = signal('01001000');
   public obterCep$ = computed(() => {
-    if (this.cep().length !== 8) return;
+    if (this.cep().length !== 8) return of('Digite um CEP válido');
 
-    return this.obterEndereco$(this.cep()).pipe(
+    return this._http.get<{ erro: boolean }>(`https://viacep.com.br/ws/${this.cep()}/json/`).pipe(
       map(resp => {
         if (resp.erro) {
           return 'Houve um erro';
@@ -44,15 +44,11 @@ export class BuscaCepComponent {
 
     setTimeout(() => {
       this.teste.mutate(value => value.nome = 'Teste!');
-    }, 1000);
+    }, 3000);
 
     effect(() => {
       console.log('mudou >>>>>>>>>', this.cep());
     });
-  }
-
-  public obterEndereco$(cep: string) {
-    return this._http.get<{ erro: boolean }>(`https://viacep.com.br/ws/${cep}/json/`);
   }
 
 }
