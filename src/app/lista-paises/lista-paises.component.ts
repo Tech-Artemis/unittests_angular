@@ -19,11 +19,11 @@ export class ListaPaisesComponent {
   public termo = new FormControl<string | null>(null);
   public termoSignal = toSignal(this.termo.valueChanges);
   public paisesFiltrados = computed(() => {
-    if (!this.termoSignal())
+    const termo = this.termoSignal();
+    if (!termo)
       return paises();
 
-    return paises().filter(p => p.toLowerCase().includes(this.termoSignal()!.toLowerCase()));
+    return paises().filter(p => p.toLowerCase().includes(termo.toLowerCase()));
   });
 
 }
-
