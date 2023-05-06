@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: 'signals',
     loadComponent: () => import('./signals-teste/signals-teste.component').then(c => c.SignalsTesteComponent),
-  }
+  },
+  {
+    path: 'paises',
+    loadComponent: () => import('./lista-paises/lista-paises.component').then(c => c.ListaPaisesComponent),
+  },
 ];
 
 @NgModule({
