@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { map } from 'rxjs';
 
 import paises from './paises';
 
@@ -19,13 +20,13 @@ export class ListaPaisesComponent {
 
   public paises = signal(paises);
   public termo = new FormControl<string | null>(null);
-  public termoSignal = toSignal(this.termo.valueChanges);
+  public termoSignal = toSignal(this.termo.valueChanges.pipe(map(termo => termo?.toLowerCase())));
   public paisesFiltrados = computed(() => {
     const termo = this.termoSignal();
     if (!termo)
       return this.paises();
 
-    return this.paises().filter(p => p.toLowerCase().includes(termo.toLowerCase()));
+    return this.paises().filter(p => p.toLowerCase().includes(termo));
   });
 
 }
