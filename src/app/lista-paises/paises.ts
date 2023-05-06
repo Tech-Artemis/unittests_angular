@@ -1,6 +1,4 @@
-import { signal } from "@angular/core";
-
-export default signal([
+export default [
     'Afeganistão',
     'África do Sul',
     'Akrotiri',
@@ -260,4 +258,4 @@ export default signal([
     'West Bank',
     'Zâmbia',
     'Zimbabué',
-])
+];
