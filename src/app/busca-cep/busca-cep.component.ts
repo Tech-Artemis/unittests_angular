@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { map } from 'rxjs';
+import { map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-busca-cep',
@@ -30,6 +30,7 @@ export class BuscaCepComponent {
 
         return resp;
       }),
+      startWith('Carregando...'),
     );
   });
 
