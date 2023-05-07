@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Signal, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Signal, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -12,6 +12,11 @@ import { filter, map } from 'rxjs';
 export class AppComponent {
 
   public rotaAtual: Signal<string | undefined>;
+  public rotas = signal([
+    { rota: 'cep', nome: 'CEP' },
+    { rota: 'paises', nome: 'Países' },
+    { rota: 'contador', nome: 'Contador' },
+  ]);
 
   constructor() {
     const router = inject(Router);

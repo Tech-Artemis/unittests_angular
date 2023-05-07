@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'paises',
     loadComponent: () => import('./lista-paises/lista-paises.component').then(c => c.ListaPaisesComponent),
   },
+  {
+    path: 'contador',
+    loadComponent: () => import('./counter/counter.component').then(c => c.CounterComponent),
+  },
 ];
 
 @NgModule({
