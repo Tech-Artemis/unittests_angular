@@ -19,10 +19,12 @@ export class CounterComponent {
 
       onCleanup(() => console.log('limpou efeito'));
     });
+    // manualCleanup true faz com que o efeito não seja destruído ao destruir o componente
   }
 
   public increment(): void {
     this.state.mutate((value) => value.counter++);
+    // this.state.update((value) => ({ counter: value.counter + 1 }));
   }
 
 }
