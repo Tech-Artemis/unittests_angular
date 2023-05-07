@@ -32,13 +32,13 @@ export class ListCountriesComponent implements AfterViewInit {
 
   public countries = signal(countries).asReadonly();
   public term = new FormControl<string | null>(null);
-  public termSignal = toSignal(this.term.valueChanges.pipe(map(termo => termo?.toLowerCase())));
+  public termSignal = toSignal(this.term.valueChanges.pipe(map(term => term?.toLowerCase())));
   public countriesFiltered = computed(() => {
-    const termo = this.termSignal();
-    if (!termo)
+    const term = this.termSignal();
+    if (!term)
       return this.countries();
 
-    return this.countries().filter(p => p.toLowerCase().includes(termo));
+    return this.countries().filter(p => p.toLowerCase().includes(term));
   });
 
   public ngAfterViewInit(): void {
