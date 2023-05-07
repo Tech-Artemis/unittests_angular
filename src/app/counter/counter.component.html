@@ -1,5 +1,14 @@
 <p>counter works!</p>
 
 <button (click)="increment()">{{ state().counter }}</button>
-<div>{{ double() }}</div>
-<div>{{ triple() }}</div>
+<span>&nbsp;{{ evenOrOdd().counter }}</span>
+
+<div>
+    {{ double() }}
+    <span>&nbsp;{{ evenOrOdd().double }}</span>
+</div>
+
+<div>
+    {{ triple() }}
+    <span>&nbsp;{{ evenOrOdd().triple }}</span>
+</div>

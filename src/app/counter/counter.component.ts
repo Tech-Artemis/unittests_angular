@@ -13,6 +13,13 @@ export class CounterComponent {
   }, { equal: (a, b) => a.counter === b.counter });
   public double = computed(() => this.state().counter * 2);
   public triple = computed(() => this.double() / 2 * 3);
+  public evenOrOdd = computed(() => {
+    return {
+      counter: this.state().counter % 2 === 0 ? 'Par' : 'Ímpar',
+      double: this.double() % 2 === 0 ? 'Par' : 'Ímpar',
+      triple: this.triple() % 2 === 0 ? 'Par' : 'Ímpar',
+    };
+  });
 
   constructor() {
     effect((onCleanup) => {
