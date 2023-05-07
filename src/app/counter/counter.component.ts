@@ -12,6 +12,7 @@ export class CounterComponent {
     counter: 0,
   }, { equal: (a, b) => a.counter === b.counter });
   public double = computed(() => this.state().counter * 2);
+  public triple = computed(() => this.double() / 2 * 3);
 
   constructor() {
     effect((onCleanup) => {
