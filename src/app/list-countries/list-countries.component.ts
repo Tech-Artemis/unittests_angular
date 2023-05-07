@@ -13,12 +13,12 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { map } from 'rxjs';
 
-import paises from './paises';
+import countries from './paises';
 
 @Component({
-  selector: 'app-lista-paises',
-  templateUrl: './lista-paises.component.html',
-  styleUrls: ['./lista-paises.component.scss'],
+  selector: 'app-list-countries',
+  templateUrl: './list-countries.component.html',
+  styleUrls: ['./list-countries.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -26,19 +26,19 @@ import paises from './paises';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListaPaisesComponent implements AfterViewInit {
+export class ListCountriesComponent implements AfterViewInit {
 
   @ViewChild('inp') public inp!: ElementRef<HTMLInputElement>;
 
-  public paises = signal(paises).asReadonly();
-  public termo = new FormControl<string | null>(null);
-  public termoSignal = toSignal(this.termo.valueChanges.pipe(map(termo => termo?.toLowerCase())));
-  public paisesFiltrados = computed(() => {
-    const termo = this.termoSignal();
+  public countries = signal(countries).asReadonly();
+  public term = new FormControl<string | null>(null);
+  public termSignal = toSignal(this.term.valueChanges.pipe(map(termo => termo?.toLowerCase())));
+  public countriesFiltered = computed(() => {
+    const termo = this.termSignal();
     if (!termo)
-      return this.paises();
+      return this.countries();
 
-    return this.paises().filter(p => p.toLowerCase().includes(termo));
+    return this.countries().filter(p => p.toLowerCase().includes(termo));
   });
 
   public ngAfterViewInit(): void {

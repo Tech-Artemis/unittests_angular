@@ -1,0 +1,7 @@
+<h1>Busca de países</h1>
+
+<input #inp type="text" [formControl]="term" placeholder="Digite o nome do país" (focusout)="inp.focus()">
+
+<p *ngFor="let p of countriesFiltered()">
+    {{ p }}
+</p>

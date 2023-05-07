@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 
-import { BuscaCepComponent } from './busca-cep.component';
+import { FindCepComponent } from './find-cep.component';
 
-describe('BuscaCepComponent', () => {
-  let component: BuscaCepComponent;
-  let fixture: ComponentFixture<BuscaCepComponent>;
+describe('FindCepComponent', () => {
+  let component: FindCepComponent;
+  let fixture: ComponentFixture<FindCepComponent>;
   let http: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('BuscaCepComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        BuscaCepComponent,
+        FindCepComponent,
       ],
       providers: [
         { provide: HttpClient, useValue: http },
@@ -24,7 +24,7 @@ describe('BuscaCepComponent', () => {
 
     http.get.and.returnValue(of({ cidade: 'tal' }));
 
-    fixture = TestBed.createComponent(BuscaCepComponent);
+    fixture = TestBed.createComponent(FindCepComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

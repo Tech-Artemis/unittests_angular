@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { map, of, startWith } from 'rxjs';
 
 @Component({
-  selector: 'app-busca-cep',
-  templateUrl: './busca-cep.component.html',
-  styleUrls: ['./busca-cep.component.scss'],
+  selector: 'app-find-cep',
+  templateUrl: './find-cep.component.html',
+  styleUrls: ['./find-cep.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -15,7 +15,7 @@ import { map, of, startWith } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BuscaCepComponent {
+export class FindCepComponent {
 
   private _http = inject(HttpClient);
 

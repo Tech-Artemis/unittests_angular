@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { ListaPaisesComponent } from './lista-paises.component';
+import { ListCountriesComponent } from './list-countries.component';
 
-describe('ListaPaisesComponent', () => {
-  let component: ListaPaisesComponent;
-  let fixture: ComponentFixture<ListaPaisesComponent>;
+describe('ListCountriesComponent', () => {
+  let component: ListCountriesComponent;
+  let fixture: ComponentFixture<ListCountriesComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ListaPaisesComponent],
+      imports: [ListCountriesComponent],
       declarations: []
     });
 
-    fixture = TestBed.createComponent(ListaPaisesComponent);
+    fixture = TestBed.createComponent(ListCountriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

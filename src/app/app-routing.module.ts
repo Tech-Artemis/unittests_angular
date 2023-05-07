@@ -5,11 +5,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'cep', pathMatch: 'full' },
   {
     path: 'cep',
-    loadComponent: () => import('./busca-cep/busca-cep.component').then(c => c.BuscaCepComponent),
+    loadComponent: () => import('./find-cep/find-cep.component').then(c => c.FindCepComponent),
   },
   {
     path: 'paises',
-    loadComponent: () => import('./lista-paises/lista-paises.component').then(c => c.ListaPaisesComponent),
+    loadComponent: () => import('./list-countries/list-countries.component').then(c => c.ListCountriesComponent),
   },
   {
     path: 'contador',
