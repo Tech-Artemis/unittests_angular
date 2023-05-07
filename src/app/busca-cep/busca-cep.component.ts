@@ -20,7 +20,7 @@ export class BuscaCepComponent {
   private _http = inject(HttpClient);
 
   public title = signal('angular-signals');
-  public teste = signal({ nome: 'teste' });
+  public teste = signal({ nome: 'teste', sobrenome: 'tal' });
   public cep = signal('01001000');
   public obterCep$ = computed(() => {
     if (this.cep().length !== 8) return of('Digite um CEP válido');
@@ -49,6 +49,10 @@ export class BuscaCepComponent {
     effect(() => {
       console.log('mudou >>>>>>>>>', this.cep());
     });
+  }
+
+  public get sobrenome(): string {
+    return this.teste().sobrenome;
   }
 
 }
