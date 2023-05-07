@@ -1,8 +1,8 @@
 <nav>
     <div class="opcoes">
-        <button *ngFor="let r of rotas()" [routerLink]="r.rota" [class.active]="rotaAtual() === r.rota">
+        <a *ngFor="let r of rotas()" [routerLink]="r.rota" [class.active]="rotaAtual() === r.rota">
             {{ r.nome }}
-        </button>
+        </a>
     </div>
 </nav>
 

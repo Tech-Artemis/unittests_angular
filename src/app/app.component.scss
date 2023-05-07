@@ -16,7 +16,10 @@ nav {
     gap: 12px;
 }
 
-button {
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-width: 60px;
     padding: 6px 12px;
     border: none;
@@ -27,14 +30,15 @@ button {
     transition-property: font-weight, background-color;
     transition-duration: 100ms;
     transition-timing-function: linear;
+    text-decoration: none;
 }
 
-.opcoes button:hover {
+.opcoes a:hover {
     background-color: #555555;
     /*   font-weight: 700; */
 }
 
-.opcoes button:where(:active, .active) {
+.opcoes a:where(:active, .active) {
     background-color: #111;
 }
 
