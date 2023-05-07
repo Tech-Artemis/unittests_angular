@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'contador',
     loadComponent: () => import('./counter/counter.component').then(c => c.CounterComponent),
   },
+  {
+    path: 'date-difference',
+    loadComponent: () => import('./date-difference/date-difference.component').then(c => c.DateDifferenceComponent),
+  },
 ];
 
 @NgModule({
