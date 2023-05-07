@@ -21,7 +21,7 @@ export class DateDifferenceComponent {
 
     if (!this.begin() || !this.end() || dateEnd.getFullYear() < 1900 || dateBegin.getFullYear() < 1900) return '';
 
-    return (dateEnd.getTime() - dateBegin.getTime()) / 1000 / 60 / 60 / 24;
+    return `Diferença em dias: ${(dateEnd.getTime() - dateBegin.getTime()) / 1000 / 60 / 60 / 24}`;
   });
 
 }
