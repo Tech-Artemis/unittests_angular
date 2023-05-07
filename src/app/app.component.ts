@@ -16,7 +16,7 @@ export class AppComponent {
     { rota: 'cep', nome: 'CEP' },
     { rota: 'paises', nome: 'Países' },
     { rota: 'contador', nome: 'Contador' },
-    { rota: 'date-difference', nome: 'Diferença de datas' },
+    { rota: 'diferenca-datas', nome: 'Diferença de datas' },
   ]);
 
   constructor() {

@@ -16,8 +16,12 @@ const routes: Routes = [
     loadComponent: () => import('./counter/counter.component').then(c => c.CounterComponent),
   },
   {
-    path: 'date-difference',
+    path: 'diferenca-datas',
     loadComponent: () => import('./date-difference/date-difference.component').then(c => c.DateDifferenceComponent),
+  },
+
+  {
+    path: '**', redirectTo: 'cep', pathMatch: 'full',
   },
 ];
 
