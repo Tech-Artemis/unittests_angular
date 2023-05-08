@@ -1,7 +1,22 @@
-input {
-    margin-bottom: 1rem;
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
 p {
     margin: 4px 0px;
+}
+
+.list {
+    max-height: 75vh;
+    overflow: auto;
+    background: #333;
+    padding: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: light) {
+    .list {
+        background: #999;
+    }
 }
