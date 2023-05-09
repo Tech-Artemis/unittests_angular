@@ -29,8 +29,8 @@ export class ListCountriesComponent {
   public term = new FormControl<string | null>(null);
   public termSignal = toSignal(
     this.term.valueChanges.pipe(
-      map(term => term?.toLowerCase()),
       debounceTime(300),
+      map(term => term?.toLowerCase()),
     )
   );
   public countriesFiltered = computed(() => {
