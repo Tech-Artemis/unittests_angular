@@ -1,11 +1,12 @@
 <h1>Busca de países</h1>
 
 <div class="form-group">
-    <input #inp type="text" [formControl]="term" placeholder="Digite o nome do país" (focusout)="inp.focus()">
+    <input #inp type="text" [formControl]="term" placeholder="Digite o nome do país" (focusout)="hideListAfterTimeout()"
+        (focusin)="showList.set(true); term.setValue('')">
 </div>
 
-<div class="list">
-    <p *ngFor="let p of countriesFiltered()">
+<div class="list" [hidden]="!showList()">
+    <p *ngFor="let p of countriesFiltered()" (click)="term.setValue(p)">
         {{ p }}
     </p>
 </div>

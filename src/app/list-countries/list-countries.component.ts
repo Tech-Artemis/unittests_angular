@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  ViewChild,
   computed,
-  signal,
+  signal
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -26,9 +23,7 @@ import countries from './paises';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListCountriesComponent implements AfterViewInit {
-
-  @ViewChild('inp') public inp!: ElementRef<HTMLInputElement>;
+export class ListCountriesComponent {
 
   public countries = signal(countries).asReadonly();
   public term = new FormControl<string | null>(null);
@@ -40,9 +35,13 @@ export class ListCountriesComponent implements AfterViewInit {
 
     return this.countries().filter(p => p.toLowerCase().includes(term));
   });
+  public showList = signal(false);
 
-  public ngAfterViewInit(): void {
-    this.inp.nativeElement.focus();
+
+  public hideListAfterTimeout(): void {
+    setTimeout(() => {
+      this.showList.set(false);
+    }, 300);
   }
 
 }
