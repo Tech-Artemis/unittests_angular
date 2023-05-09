@@ -8,7 +8,7 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import { map } from 'rxjs';
+import { debounceTime, map } from 'rxjs';
 
 import countries from './paises';
 
@@ -27,7 +27,12 @@ export class ListCountriesComponent {
 
   public countries = signal(countries).asReadonly();
   public term = new FormControl<string | null>(null);
-  public termSignal = toSignal(this.term.valueChanges.pipe(map(term => term?.toLowerCase())));
+  public termSignal = toSignal(
+    this.term.valueChanges.pipe(
+      map(term => term?.toLowerCase()),
+      debounceTime(300),
+    )
+  );
   public countriesFiltered = computed(() => {
     const term = this.termSignal();
     if (!term)
@@ -36,7 +41,6 @@ export class ListCountriesComponent {
     return this.countries().filter(p => p.toLowerCase().includes(term));
   });
   public showList = signal(false);
-
 
   public hideListAfterTimeout(): void {
     setTimeout(() => {
