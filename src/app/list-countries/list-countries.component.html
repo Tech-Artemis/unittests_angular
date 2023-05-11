@@ -1,4 +1,9 @@
-<h1>Busca de países</h1>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1>Busca de países</h1>
+    <button (click)="showList.set(!showList())">
+        {{ showList() ? 'Ocultar lista' : 'Exibir lista' }}
+    </button>
+</div>
 
 <div class="form-group">
     <input #inp type="text" [formControl]="term" placeholder="Digite o nome do país" (focusout)="hideListAfterTimeout()"
@@ -6,7 +11,7 @@
 </div>
 
 <div class="list" [hidden]="!showList()">
-    <p *ngFor="let p of countriesFiltered()" (click)="term.setValue(p)">
+    <p *ngFor="let p of countriesFiltered()" (click)="term.setValue(p); showList.set(false);">
         {{ p }}
     </p>
 </div>

@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'diferenca-datas',
     loadComponent: () => import('./date-difference/date-difference.component').then(c => c.DateDifferenceComponent),
   },
+  {
+    path: 'tic-tac-toe',
+    loadComponent: () => import('./tic-tac-toe/tic-tac-toe.component').then(c => c.TicTacToeComponent),
+  },
 
   {
     path: '**', redirectTo: 'cep', pathMatch: 'full',

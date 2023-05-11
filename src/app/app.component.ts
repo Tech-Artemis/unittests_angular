@@ -17,6 +17,7 @@ export class AppComponent {
     { rota: 'paises', nome: 'Países' },
     { rota: 'contador', nome: 'Contador' },
     { rota: 'diferenca-datas', nome: 'Diferença de datas' },
+    { rota: 'tic-tac-toe', nome: 'Jogo da velha' },
   ]);
 
   constructor() {

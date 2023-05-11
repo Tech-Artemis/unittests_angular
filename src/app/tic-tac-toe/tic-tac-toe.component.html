@@ -1,0 +1,17 @@
+<h1>Jogo da velha</h1>
+
+<h2>
+    <ng-container *ngIf="someoneWins() as textWin">
+        {{ textWin }}
+        <button (click)="reset()">Recomeçar</button>
+    </ng-container>
+    &nbsp;
+</h2>
+
+<main [class.finished]="someoneWins()">
+    <div *ngFor="let row of game(); let i=index" class="row">
+        <div *ngFor="let column of row; let j=index" class="column" (click)="chooseBox(i, j)">
+            {{ column }}
+        </div>
+    </div>
+</main>
