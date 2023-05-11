@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { interval, map } from 'rxjs';
 
 @Component({
   selector: 'app-counter',
@@ -21,6 +23,12 @@ export class CounterComponent {
       triple: this.triple() % 2 === 0 ? 'Par' : 'Ímpar',
     };
   });
+
+  public timer = toSignal(
+    interval(1000).pipe(
+      map(value => value * 2),
+    )
+  );
 
   constructor() {
     effect((onCleanup) => {
