@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, TrackByFunction } from '@angular/core';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -11,6 +11,8 @@ import { Component, computed, signal } from '@angular/core';
   ]
 })
 export class TicTacToeComponent {
+
+  public trackByFunction: TrackByFunction<string> = (_, item) => item;
 
   public actualPlayer = signal<1 | 2>(1);
   public game = signal([
@@ -32,7 +34,7 @@ export class TicTacToeComponent {
       game[last.x][1] === actualSymbol &&
       game[last.x][2] === actualSymbol
     ) {
-      return this.getTextWin(actualSymbol === 'X' ? 1 : 2);
+      return actualSymbol === 'X' ? 1 : 2;
     }
 
     // Verificar coluna
@@ -41,7 +43,7 @@ export class TicTacToeComponent {
       game[1][last.y] === actualSymbol &&
       game[2][last.y] === actualSymbol
     ) {
-      return this.getTextWin(actualSymbol === 'X' ? 1 : 2);
+      return actualSymbol === 'X' ? 1 : 2;
     }
 
     // Verificar diagonais
@@ -50,7 +52,7 @@ export class TicTacToeComponent {
       game[1][1] === actualSymbol &&
       game[2][2] === actualSymbol
     ) {
-      return this.getTextWin(actualSymbol === 'X' ? 1 : 2);
+      return actualSymbol === 'X' ? 1 : 2;
     }
 
     if (
@@ -58,12 +60,12 @@ export class TicTacToeComponent {
       game[1][1] === actualSymbol &&
       game[0][2] === actualSymbol
     ) {
-      return this.getTextWin(actualSymbol === 'X' ? 1 : 2);
+      return actualSymbol === 'X' ? 1 : 2;
     }
 
     // Deu velha
     if (game.flat().filter(r => !!r).length === 9) {
-      return 'Deu velha!';
+      return -1;
     }
 
     return undefined;

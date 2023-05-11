@@ -9,12 +9,16 @@ $border: 1px solid #aaa;
 main {
     width: fit-content;
 
-    &.finished {
+    &.wins {
         background-color: green;
+    }
 
-        .column {
-            cursor: default;
-        }
+    &.draw {
+        background-color: orange;
+    }
+
+    &:where(.wins, .draw) .column {
+        cursor: default;
     }
 }
 

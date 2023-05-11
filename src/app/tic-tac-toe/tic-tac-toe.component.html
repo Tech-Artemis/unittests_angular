@@ -2,15 +2,15 @@
 
 <h2>
     <ng-container *ngIf="someoneWins() as textWin; else currentPlayer">
-        {{ textWin }}
+        {{ textWin === -1 ? 'Deu velha!' : 'Jogador ' + textWin + ' venceu!' }}
         <button (click)="reset()">Recomeçar</button>
     </ng-container>
     &nbsp;
 </h2>
 
-<main [class.finished]="someoneWins()">
-    <div *ngFor="let row of game(); let i=index" class="row">
-        <div *ngFor="let column of row; let j=index" class="column" (click)="chooseBox(i, j)">
+<main [class.wins]="someoneWins()! > 0" [class.draw]="someoneWins()! === -1">
+    <div *ngFor="let row of game(); let i=index; trackBy: trackByFunction;" class="row">
+        <div *ngFor="let column of row; let j=index; trackBy: trackByFunction" class="column" (click)="chooseBox(i, j)">
             {{ column }}
         </div>
     </div>
