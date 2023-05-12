@@ -74,10 +74,12 @@ export class TicTacToeComponent {
   public againstBot = signal(false);
   public alreadyPlayed = computed(() => this.game().flat().filter(r => !!r).length > 0);
 
-  public chooseBox(x: number, y: number): void {
+  public chooseBox(x: number, y: number, isBot?: boolean): void {
     const someoneWins = this.someoneWins();
     const isFilled = !!this.game()[x][y];
     if (someoneWins || isFilled) return;
+
+    if (this.againstBot() && !isBot && this.actualPlayer() === 2) return;
 
     this.game.mutate((value) => value[x][y] = this.actualPlayer() === 1 ? 'X' : 'O');
     this.actualPlayer.update(value => value === 1 ? 2 : 1);
@@ -114,7 +116,7 @@ export class TicTacToeComponent {
       currentPosition = getRandomPositions();
     }
 
-    this.chooseBox(currentPosition.x, currentPosition.y);
+    this.chooseBox(currentPosition.x, currentPosition.y, true);
   }
 
 }
