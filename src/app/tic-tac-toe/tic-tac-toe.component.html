@@ -17,8 +17,10 @@
 </main>
 
 <div style="text-align: center; margin-top: 2rem;">
-    <input type="checkbox" [disabled]="alreadyPlayed()" (change)="toggleBot()">
-    Contra o bot?
+    <label>
+        <input type="checkbox" [disabled]="alreadyPlayed()" (change)="toggleBot()">
+        Contra o bot?
+    </label>
     <br>
     <sub>Por enquanto o bot está escolhendo aleatoriamente</sub>
 </div>
