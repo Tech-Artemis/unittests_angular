@@ -104,6 +104,13 @@ export class TicTacToeComponent {
   }
 
   private _botPlays(): void {
+    const { x, y } = this._getBestMovement();
+
+    if (x !== undefined && y !== undefined) {
+      this.chooseBox(x, y, true);
+      return;
+    }
+
     const getRandomPositions = () => ({
       x: Math.floor(Math.random() * 3),
       y: Math.floor(Math.random() * 3),
@@ -117,6 +124,31 @@ export class TicTacToeComponent {
     }
 
     this.chooseBox(currentPosition.x, currentPosition.y, true);
+  }
+
+  private _getBestMovement() {
+    // let movementWin = this._getMovementWin();
+    let preventPlayer = this._preventPlayerWin();
+
+    /* if (movemntWin.x !== undefined && movementWin.y !== undefined) {
+      return movementWin;
+    } */
+
+    return preventPlayer;
+  }
+
+  private _preventPlayerWin() {
+    const horizontal = this.game().find(r => r.find(c => c === 'X'));
+    let x: number | undefined, y: number | undefined;
+
+    if (horizontal && (this.game().find(r => r.find(c => c === 'X'))?.filter(r => r === 'X').length || 0) > 1) {
+      x = this.game().indexOf(this.game().find(r => r.find(c => c === 'X')) || []);
+      y = this.game().find(r => r.find(c => c === 'X'))?.indexOf('');
+
+      y = y === -1 ? undefined : y;
+    }
+
+    return { x, y };
   }
 
 }
