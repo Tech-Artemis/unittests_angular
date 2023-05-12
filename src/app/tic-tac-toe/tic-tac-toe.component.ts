@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, computed, signal, TrackByFunction } from '@angular/core';
 
 @Component({
@@ -7,8 +7,9 @@ import { Component, computed, signal, TrackByFunction } from '@angular/core';
   styleUrls: ['./tic-tac-toe.component.scss'],
   standalone: true,
   imports: [
-    CommonModule,
-  ]
+    NgIf,
+    NgFor,
+  ],
 })
 export class TicTacToeComponent {
 
