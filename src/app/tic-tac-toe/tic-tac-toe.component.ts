@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, computed, signal, TrackByFunction } from '@angular/core';
+import { Component, TrackByFunction, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -71,6 +71,8 @@ export class TicTacToeComponent {
 
     return undefined;
   });
+  public againstBot = signal(false);
+  public alreadyPlayed = computed(() => this.game().flat().filter(r => !!r).length > 0);
 
   public chooseBox(x: number, y: number): void {
     const someoneWins = this.someoneWins();
@@ -80,6 +82,9 @@ export class TicTacToeComponent {
     this.game.mutate((value) => value[x][y] = this.actualPlayer() === 1 ? 'X' : 'O');
     this.actualPlayer.update(value => value === 1 ? 2 : 1);
     this.lastMovement.set({ x, y });
+
+    if (this.againstBot() && !this.someoneWins() && this.actualPlayer() === 2)
+      setTimeout(() => this._botPlays(), 1000);
   }
 
   public reset(): void {
@@ -92,8 +97,24 @@ export class TicTacToeComponent {
     this.lastMovement.set({});
   }
 
-  private getTextWin(player: number): string {
-    return `Jogador ${player} ganhou!`;
+  public toggleBot(): void {
+    this.againstBot.update(value => !value);
+  }
+
+  private _botPlays(): void {
+    const getRandomPositions = () => ({
+      x: Math.floor(Math.random() * 3),
+      y: Math.floor(Math.random() * 3),
+    });
+
+    let currentPosition = getRandomPositions();
+
+    // enquanto encontrar uma célula preenchida, continue procurando
+    while (this.game()[currentPosition.x][currentPosition.y] !== '') {
+      currentPosition = getRandomPositions();
+    }
+
+    this.chooseBox(currentPosition.x, currentPosition.y);
   }
 
 }

@@ -16,6 +16,13 @@
     </div>
 </main>
 
+<div style="text-align: center; margin-top: 2rem;">
+    <input type="checkbox" [disabled]="alreadyPlayed()" (change)="toggleBot()">
+    Contra o bot?
+    <br>
+    <sub>Por enquanto o bot está escolhendo aleatoriamente</sub>
+</div>
+
 <ng-template #currentPlayer>
     Jogador {{ actualPlayer() }}
 </ng-template>
