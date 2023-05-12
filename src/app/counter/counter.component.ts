@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { interval, map } from 'rxjs';
+import { delay, interval, map, take } from 'rxjs';
 
 @Component({
   selector: 'app-counter',
@@ -25,9 +25,12 @@ export class CounterComponent {
   });
 
   public timer = toSignal(
-    interval(1000).pipe(
+    interval(50).pipe(
+      delay(2000), // espera 2s antes de começar
       map(value => value * 2),
-    )
+      take(101),
+    ),
+    { initialValue: -1 },
   );
 
   constructor() {
