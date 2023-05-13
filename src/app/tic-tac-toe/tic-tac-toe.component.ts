@@ -28,6 +28,7 @@ export class TicTacToeComponent {
 
     const game = this.game();
     const actualSymbol = game[last.x][last.y];
+    const actualPlayer = actualSymbol === 'X' ? 1 : 2;
 
     // Verificar linha
     if (
@@ -35,7 +36,7 @@ export class TicTacToeComponent {
       game[last.x][1] === actualSymbol &&
       game[last.x][2] === actualSymbol
     ) {
-      return actualSymbol === 'X' ? 1 : 2;
+      return actualPlayer;
     }
 
     // Verificar coluna
@@ -44,7 +45,7 @@ export class TicTacToeComponent {
       game[1][last.y] === actualSymbol &&
       game[2][last.y] === actualSymbol
     ) {
-      return actualSymbol === 'X' ? 1 : 2;
+      return actualPlayer;
     }
 
     // Verificar diagonais
@@ -53,7 +54,7 @@ export class TicTacToeComponent {
       game[1][1] === actualSymbol &&
       game[2][2] === actualSymbol
     ) {
-      return actualSymbol === 'X' ? 1 : 2;
+      return actualPlayer;
     }
 
     if (
@@ -61,7 +62,7 @@ export class TicTacToeComponent {
       game[1][1] === actualSymbol &&
       game[0][2] === actualSymbol
     ) {
-      return actualSymbol === 'X' ? 1 : 2;
+      return actualPlayer;
     }
 
     // Deu velha
