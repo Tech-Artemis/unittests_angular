@@ -16,6 +16,21 @@ input {
     transition: border-bottom 250ms;
 
     &:focus {
-        border-bottom-color: #888;
+        border-bottom-color: #777;
+    }
+}
+
+::placeholder {
+    color: #fff;
+}
+
+@media (prefers-color-scheme: light) {
+    input {
+        background-color: #9d9d9d;
+        border-color: #aaa;
+    }
+
+    input[disabled] {
+        background-color: #505050;
     }
 }

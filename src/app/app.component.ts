@@ -18,6 +18,7 @@ export class AppComponent {
     { rota: 'contador', nome: 'Contador' },
     { rota: 'diferenca-datas', nome: 'Diferença de datas' },
     { rota: 'tic-tac-toe', nome: 'Jogo da velha' },
+    { rota: 'matematica', nome: 'Matemática' },
   ]);
 
   constructor() {

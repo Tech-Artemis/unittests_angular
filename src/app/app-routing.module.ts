@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'tic-tac-toe',
     loadComponent: () => import('./tic-tac-toe/tic-tac-toe.component').then(c => c.TicTacToeComponent),
   },
+  {
+    path: 'matematica',
+    loadComponent: () => import('./mathematics/mathematics.component').then(c => c.MathematicsComponent),
+  },
 
   {
     path: '**', redirectTo: 'cep', pathMatch: 'full',

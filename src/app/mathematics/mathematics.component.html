@@ -1,0 +1,68 @@
+<h1 style="display: inline-block; line-height: 1;">Regra de três</h1>
+<button (click)="reset()" style="margin-left: 1rem;">Reset</button>
+
+<div class="main">
+    <div>
+        <input type="number" class="a" placeholder="A" [ngModel]="ruleOfThree.a"
+            (ngModelChange)="onChangeInput('a', $event)">
+        <span class="spacer">Está para</span>
+        <input type="number" class="b" placeholder="B" [ngModel]="ruleOfThree.b"
+            (ngModelChange)="onChangeInput('b', $event)">
+    </div>
+
+    <div>Assim como</div>
+
+    <div>
+        <input type="number" class="c" placeholder="C" [ngModel]="ruleOfThree.c"
+            (ngModelChange)="onChangeInput('c', $event)">
+        <span class="spacer">Está para</span>
+        <input type="text" class="x" [value]="x() ? 'X=' + x() : ''" disabled placeholder="X">
+    </div>
+
+    <div class="expression">
+        <h3 class="title">Fórmula:</h3>
+
+        <p class="step-0">
+            <span class="a">A</span> *
+            <span class="x">X</span> =
+            <span class="c">C</span> *
+            <span class="b">B</span>
+        </p>
+        <ng-container *ngIf="isAllFilled()">
+            <p class="step-1">
+                <ng-container *ngTemplateOutlet="a"></ng-container> * <span class="x">X</span> =
+                <ng-container *ngTemplateOutlet="c"></ng-container> *
+                <ng-container *ngTemplateOutlet="b"></ng-container>
+            </p>
+            <p class="step-2">
+                <span class="x">X</span> = <ng-container *ngTemplateOutlet="c"></ng-container> *
+                <ng-container *ngTemplateOutlet="b"></ng-container> /
+                <ng-container *ngTemplateOutlet="a"></ng-container>
+            </p>
+            <p class="step-3">
+                <span class="x">X</span> = {{ ruleOfThree.b! * ruleOfThree.c! }} /
+                <ng-container *ngTemplateOutlet="a"></ng-container>
+            </p>
+            <p class="step-4">
+                <span class="x">X</span> = <ng-container *ngTemplateOutlet="xTempl"></ng-container>
+            </p>
+        </ng-container>
+
+    </div>
+</div>
+
+<ng-template #a>
+    <span class="a">{{ ruleOfThree.a }}</span>
+</ng-template>
+
+<ng-template #b>
+    <span class="b">{{ ruleOfThree.b }}</span>
+</ng-template>
+
+<ng-template #c>
+    <span class="c">{{ ruleOfThree.c }}</span>
+</ng-template>
+
+<ng-template #xTempl>
+    <span class="x">{{ x() }}</span>
+</ng-template>
