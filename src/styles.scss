@@ -16,7 +16,7 @@ input {
     transition: border-bottom 250ms;
 
     &:focus {
-        border-bottom-color: #777;
+        border-bottom-color: #5d0dff;
     }
 }
 
@@ -27,7 +27,7 @@ input {
 @media (prefers-color-scheme: light) {
     input {
         background-color: #9d9d9d;
-        border-color: #aaa;
+        border-color: #333;
     }
 
     input[disabled] {

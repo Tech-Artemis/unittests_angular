@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { delay, interval, map, take } from 'rxjs';
+import { delay, finalize, interval, map, take } from 'rxjs';
 
 @Component({
   selector: 'app-counter',
@@ -29,6 +29,7 @@ export class CounterComponent {
       delay(2000), // espera 2s antes de começar
       map(value => value * 2),
       take(101),
+      finalize(() => console.log('finalizou')),
     ),
     { initialValue: -1 },
   );
