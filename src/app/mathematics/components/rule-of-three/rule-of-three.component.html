@@ -4,19 +4,19 @@
 <div class="main">
     <div>
         <input type="number" class="a" placeholder="A" [ngModel]="state().a"
-            (ngModelChange)="onChangeInput('a', $event)">
+            (ngModelChange)="onChangeInput('a', $event)" />
         <span class="spacer">Está para</span>
         <input type="number" class="b" placeholder="B" [ngModel]="state().b"
-            (ngModelChange)="onChangeInput('b', $event)">
+            (ngModelChange)="onChangeInput('b', $event)" />
     </div>
 
     <div>Assim como</div>
 
     <div>
         <input type="number" class="c" placeholder="C" [ngModel]="state().c"
-            (ngModelChange)="onChangeInput('c', $event)">
+            (ngModelChange)="onChangeInput('c', $event)" />
         <span class="spacer">Está para</span>
-        <input type="text" class="x" [value]="x() ? 'X=' + x() : ''" disabled placeholder="X">
+        <input type="text" class="x" [value]="x() ? 'X=' + x() : ''" disabled placeholder="X" />
     </div>
 
     <div class="expression">
@@ -47,7 +47,6 @@
                 <span class="x">X</span> = <ng-container *ngTemplateOutlet="xTempl"></ng-container>
             </p>
         </ng-container>
-
     </div>
 </div>
 
