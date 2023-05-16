@@ -2,6 +2,10 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+// https://stackoverflow.com/a/60301306/8082488
+// X = typeof this.state
+// type GetInsideSignal<X> = X extends WritableSignal<infer I> ? I : never;
+
 @Component({
   selector: 'app-rule-of-three',
   templateUrl: './rule-of-three.component.html',
@@ -30,8 +34,8 @@ export class RuleOfThreeComponent {
     }
   });
 
-  public onChangeInput(prop: string, value: number): void {
-    this.state.mutate(_value => _value[prop as keyof typeof _value] = value);
+  public onChangeInput(prop: keyof ReturnType<RuleOfThreeComponent['state']>, value: number): void {
+    this.state.mutate(_value => _value[prop] = value);
   }
 
   public reset(): void {
