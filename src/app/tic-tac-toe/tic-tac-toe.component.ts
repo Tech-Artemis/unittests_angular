@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, TrackByFunction, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, TrackByFunction, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -10,6 +10,7 @@ import { Component, TrackByFunction, computed, signal } from '@angular/core';
     NgIf,
     NgFor,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TicTacToeComponent {
 

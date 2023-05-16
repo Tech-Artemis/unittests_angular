@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RuleOfThreeComponent } from './components/rule-of-three/rule-of-three.component';
 
 @Component({
@@ -9,6 +9,7 @@ import { RuleOfThreeComponent } from './components/rule-of-three/rule-of-three.c
   imports: [
     RuleOfThreeComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MathematicsComponent {
 

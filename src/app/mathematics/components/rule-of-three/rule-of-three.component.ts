@@ -1,5 +1,5 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // https://stackoverflow.com/a/60301306/8082488
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     NgIf,
     NgTemplateOutlet,
     FormsModule,
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RuleOfThreeComponent {
 
