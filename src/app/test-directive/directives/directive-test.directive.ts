@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
 
 @Directive({
   selector: '[appDirectiveTest]',
@@ -15,6 +15,17 @@ export class DirectiveTestDirective implements OnInit {
     this._elementRef.nativeElement.style.color = this.appDirectiveTest!;
 
     this._elementRef.nativeElement.addEventListener('click', () => this.clicked.emit('clicou'));
+  }
+
+  @HostListener('mouseenter')
+  public onMouseEnter(): void {
+    this._elementRef.nativeElement.style.display = 'block';
+    this._elementRef.nativeElement.style.backgroundColor = 'yellow';
+  }
+
+  @HostListener('mouseleave')
+  public onMouseLeave(): void {
+    this._elementRef.nativeElement.style.backgroundColor = '';
   }
 
 }
