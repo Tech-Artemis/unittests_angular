@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'matematica',
     loadComponent: () => import('./mathematics/mathematics.component').then(c => c.MathematicsComponent),
   },
+  {
+    path: 'diretiva',
+    loadComponent: () => import('./test-directive/test-directive.component'),
+  },
 
   {
     path: '**', redirectTo: 'cep', pathMatch: 'full',
