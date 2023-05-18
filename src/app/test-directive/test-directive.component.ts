@@ -18,7 +18,7 @@ export default class TestDirectiveComponent {
   @HostBinding('class.expanded')
   public expanded: boolean = false;
 
-  @HostBinding('style.fontSize')
+  @HostBinding('style.font-size')
   public fontSize = '16px';
 
   @HostBinding('style.cursor')
