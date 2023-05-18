@@ -1,4 +1,14 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, inject } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 
 @Directive({
   selector: '[appDirectiveTest]',
@@ -8,6 +18,7 @@ export class DirectiveTestDirective implements OnInit {
 
   private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
+  @HostBinding('attr.teste') // adicionara um attr teste com o valor da prop appDirectiveTest
   @Input() appDirectiveTest?: string;
   @Output() clicked = new EventEmitter();
 
