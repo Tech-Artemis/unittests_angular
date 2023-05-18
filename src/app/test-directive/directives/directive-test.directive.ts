@@ -5,28 +5,23 @@ import {
   HostBinding,
   HostListener,
   Input,
-  OnInit,
   Output,
-  inject,
+  inject
 } from '@angular/core';
 
 @Directive({
   selector: '[appDirectiveTest]',
   standalone: true,
 })
-export class DirectiveTestDirective implements OnInit {
+export class DirectiveTestDirective {
 
   private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  @HostBinding('attr.teste') // adicionara um attr teste com o valor da prop appDirectiveTest
-  @Input() appDirectiveTest?: string;
+  @HostBinding('style.color')
+  @Input()
+  public appDirectiveTest?: string;
+
   @Output() clicked = new EventEmitter();
-
-  public ngOnInit(): void {
-    this._elementRef.nativeElement.style.color = this.appDirectiveTest!;
-
-    this._elementRef.nativeElement.addEventListener('click', () => this.clicked.emit('clicou'));
-  }
 
   @HostListener('mouseenter')
   public onMouseEnter(): void {
@@ -36,7 +31,13 @@ export class DirectiveTestDirective implements OnInit {
 
   @HostListener('mouseleave')
   public onMouseLeave(): void {
+    this._elementRef.nativeElement.style.display = '';
     this._elementRef.nativeElement.style.backgroundColor = '';
+  }
+
+  @HostListener('click')
+  public onClick(): void {
+    this.clicked.emit('clicou');
   }
 
 }
