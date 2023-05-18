@@ -17,7 +17,7 @@ export class DirectiveTestDirective {
 
   private _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  @HostBinding('style.color')
+  @HostBinding('style.color') // é o mesmo que: this._elementRef.nativeElement.style.color = this.appDirectiveTest;
   @Input()
   public appDirectiveTest?: string;
 
