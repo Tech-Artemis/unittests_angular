@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'diretiva',
     loadComponent: () => import('./test-directive/test-directive.component'),
   },
+  {
+    path: 'counter-sem-signals',
+    loadComponent: () => import('./counter-without-signals/counter-without-signals.component'),
+  },
 
   {
     path: '**', redirectTo: 'cep', pathMatch: 'full',
