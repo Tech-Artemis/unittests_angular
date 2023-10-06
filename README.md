@@ -1,4 +1,3 @@
-# Angular16
 
 ## Development server
 
